@@ -7528,10 +7528,8 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Das Modell wurde trainiert auf historischen Wetterprognosen zwischen November 2022 bis Dezember 2024, welche über die API von Open-Meteo.com bezogen wurden.</p>
-<p>Nach dem Training erreicht das Modell auf "ungesehenen" Daten eine Präzision von ca. 80% und einen Recall von ca. 50% (bezogen auf hohen Vorhersagewahrscheinlichkeiten &gt; 75% ).
-D.h. an 80% der vorhergesagten Föhntage herrscht tatsächlich Föhn am Kochelsee und ca. die Hälfte aller Tage an denen tatsächlich Föhn herrscht wird auch vorhergesagt.
-Das wird in der Confusion Matrix unten verdeutlicht.</p>
+<p>Das Modell wurde trainiert auf historischen Wetterprognosen zwischen November 2022 und Dezember 2024, die über die API von Open-Meteo.com bezogen wurden.</p>
+<p>Nach dem Training erreicht das Modell auf "ungesehenen" Daten eine Präzision von ca. 80 % und einen Recall von ca. 50 %. Das heißt, an 80 % der vorhergesagten Föhntage herrscht tatsächlich Föhn am Kochelsee, und ca. die Hälfte aller Tage, an denen tatsächlich Föhn herrscht, wird auch vorhergesagt. Das wird in der Confusion Matrix unten für einen Zeitraum von 234 Tagen verdeutlicht. Dort erhalten Tage mit hoher Föhnwahrscheinlichkeit (&gt; 75 %) das Predicted Label 1, und Tage, an denen tatsächlich Föhn war, das True Label 1.</p>
 </div>
 </div>
 </div>
@@ -7553,8 +7551,7 @@ Das wird in der Confusion Matrix unten verdeutlicht.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Das zugrundeliegende Modell ist ein RandomForest-Classifier, welcher 14 Merkmale zu Vorhersage verwendet und aus ca. 100 Entscheidungsbäumen besteht.
-Zur Illustration sind die Namen dieser Merkmale unten zusammen mit ihrer Wichtigkeit dargestellt. Besonders hilfreiche Merkmale sind die vorhergesagte Windgeschwindigkeit mal Dauer aus dem AROME-Wettermodell, die Druckdifferenz zwischen Kochel und Bozen sowie die vorhergesagte Luftfeutichkeit. Falls jemand weitere guten Ideen hat, welche Größen die Vorhersage noch verbessern könnten gerne Bescheid geben :) Die Temperaturdifferenz zwischen Kochel und Bozen bei 800hPA (ca. 2000 m Höhe) habe ich z.B. berücksichtigt, da sie in diesem Artikel als wichtiger Treiber für Föhnwinde erwähnt wird:  <a href="https://lu-glidz.blogspot.com/2022/12/fohn-bei-kleinem-druckgradient.html">https://lu-glidz.blogspot.com/2022/12/fohn-bei-kleinem-druckgradient.html</a></p>
+<p>Das zugrunde liegende Modell ist ein Random Forest-Classifier, basierend auf <a href="https://scikit-learn.org/stable/">scikit-learn</a>, der 14 Merkmale zur Vorhersage verwendet und aus ca. 100 Entscheidungsbäumen besteht. Zur Illustration sind die Namen dieser Merkmale unten zusammen mit ihrer Wichtigkeit dargestellt. Besonders hilfreiche Merkmale sind die im AROME-Wettermodell vorhergesagte Windgeschwindigkeit multipliziert mit der Dauer, die Druckdifferenz zwischen Kochel und Bozen sowie die vorhergesagte Luftfeuchtigkeit. Falls jemand weitere gute Ideen hat, welche Größen die Vorhersage noch verbessern könnten, gerne Bescheid geben! :) Die Temperaturdifferenz zwischen Kochel und Bozen bei 800 hPa (ca. 2000 m Höhe) habe ich z. B. berücksichtigt, da sie <a href="https://lu-glidz.blogspot.com/2022/12/fohn-bei-kleinem-druckgradient.html">hier</a> als wichtiger Treiber für Föhnwinde erwähnt wird.</p>
 </div>
 </div>
 </div>
