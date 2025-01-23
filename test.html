@@ -22,9 +22,11 @@
 
     <script>
         const apiUrl = 'https://api.countapi.xyz';
+        const namespace = 'koechelt_der_kochel'; // Replace with a unique namespace
+        const key = 'visitors'; // Replace with a unique key
 
         // Increment the count on page load
-        fetch(`${apiUrl}/update/my_website/visits/?amount=1`)
+        fetch(`${apiUrl}/update/${namespace}/${key}/?amount=1`)
             .then(response => response.json())
             .then(data => {
                 document.getElementById('visitorCount').innerText = data.value;
@@ -32,7 +34,7 @@
             .catch(error => console.error('Error:', error));
 
         // Get the current count
-        fetch(`${apiUrl}/get/your_namespace/your_key`)
+        fetch(`${apiUrl}/get/${namespace}/${key}`)
             .then(response => response.json())
             .then(data => {
                 document.getElementById('visitorCount').innerText = data.value;
