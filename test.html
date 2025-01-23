@@ -1,0 +1,40 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Counter Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        #visitorCount {
+            font-weight: bold;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My GitHub Page!</h1>
+    <p>Number of visits: <span id="visitorCount">0</span></p>
+
+    <script>
+        (function() {
+            // Get the current visit count from local storage
+            let count = localStorage.getItem('visitCount');
+            count = count ? parseInt(count) + 1 : 1; // Increment or initialize
+            localStorage.setItem('visitCount', count); // Store updated count
+
+            // Display the count in the element with ID 'visitorCount'
+            document.addEventListener('DOMContentLoaded', function() {
+                const visitorCountElement = document.getElementById('visitorCount');
+                if (visitorCountElement) {
+                    visitorCountElement.innerText = count;
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
