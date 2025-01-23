@@ -1,9 +1,9 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visitor Counter Example</title>
+    <title>Visitor Counter with CountAPI</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,24 +17,27 @@
     </style>
 </head>
 <body>
-    <h1>Welcome to My GitHub Page!</h1>
+    <h1>Welcome to My Website!</h1>
     <p>Number of visits: <span id="visitorCount">0</span></p>
 
     <script>
-        (function() {
-            // Get the current visit count from local storage
-            let count = localStorage.getItem('visitCount');
-            count = count ? parseInt(count) + 1 : 1; // Increment or initialize
-            localStorage.setItem('visitCount', count); // Store updated count
+        const apiUrl = 'https://api.countapi.xyz';
 
-            // Display the count in the element with ID 'visitorCount'
-            document.addEventListener('DOMContentLoaded', function() {
-                const visitorCountElement = document.getElementById('visitorCount');
-                if (visitorCountElement) {
-                    visitorCountElement.innerText = count;
-                }
-            });
-        })();
+        // Increment the count on page load
+        fetch(`${apiUrl}/update/your_namespace/your_key/?amount=1`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('visitorCount').innerText = data.value;
+            })
+            .catch(error => console.error('Error:', error));
+
+        // Get the current count
+        fetch(`${apiUrl}/get/your_namespace/your_key`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('visitorCount').innerText = data.value;
+            })
+            .catch(error => console.error('Error:', error));
     </script>
 </body>
 </html>
