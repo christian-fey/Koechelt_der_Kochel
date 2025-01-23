@@ -24,7 +24,7 @@
         const apiUrl = 'https://api.countapi.xyz';
 
         // Increment the count on page load
-        fetch(`${apiUrl}/update/your_namespace/your_key/?amount=1`)
+        fetch(`${apiUrl}/update/my_website/visits/?amount=1`)
             .then(response => response.json())
             .then(data => {
                 document.getElementById('visitorCount').innerText = data.value;
