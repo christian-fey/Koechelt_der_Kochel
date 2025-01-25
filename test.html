@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Like Button</title>
+    <title>Manual Counter Example</title>
     <style>
-        .like-button {
+        .counter-button {
             padding: 10px 20px;
             background-color: #007bff;
             color: white;
@@ -13,19 +13,39 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        .counter-display {
+            margin-top: 20px;
+            font-size: 1.5em;
+        }
     </style>
 </head>
 <body>
-    <button class="like-button" id="likeButton">Like</button>
-    <p id="likeStatus"></p>
+
+    <h1>Welcome to My Website!</h1>
+    <p>This page has a manual counter that increments when you click the button.</p>
+
+    <!-- Button to Increment Counter -->
+    <button class="counter-button" id="incrementButton">Increment Counter</button>
+
+    <!-- Display the Current Counter Value -->
+    <div class="counter-display">
+        <p>Counter Value: <span id="counterValue">0</span></p>
+    </div>
 
     <script>
-        let likeCount = 0;
+        // Initialize counter from localStorage or set to 0 if it's the first time
+        let counter = parseInt(localStorage.getItem('counter')) || 0;
+        
+        // Display the initial counter value
+        document.getElementById('counterValue').innerText = counter;
 
-        document.getElementById('likeButton').addEventListener('click', function() {
-            likeCount++;
-            document.getElementById('likeStatus').innerText = `Likes: ${likeCount}`;
+        // Add click event to the button to increment the counter
+        document.getElementById('incrementButton').addEventListener('click', function() {
+            counter++; // Increment the counter
+            localStorage.setItem('counter', counter); // Save to localStorage
+            document.getElementById('counterValue').innerText = counter; // Update the display
         });
     </script>
+
 </body>
 </html>
