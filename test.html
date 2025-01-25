@@ -3,56 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Incrementable Counter Example</title>
-    <style>
-        .counter-button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .counter-display {
-            margin-top: 20px;
-            font-size: 1.5em;
-        }
-    </style>
+    <title>My GitHub Page</title>
 </head>
 <body>
 
-    <h1>Welcome to My Website!</h1>
-    <p>This page has a counter that you can increment by clicking the button.</p>
+    <h1>Welcome to My GitHub Page</h1>
 
-    <!-- Button to Increment Counter -->
-    <button class="counter-button" id="incrementButton">Increment Counter</button>
-
-    <!-- Display the Current Counter Value -->
-    <div class="counter-display">
-        <p>Page Views (click to increment):</p>
-        <img id="pageCounter" src="https://hits.seeyoufarm.com/api/count/pageview/static.svg?url=https://yourusername.github.io/your-repository" />
-    </div>
-
+    <!-- Like Button -->
+    <span class="likebtn-wrapper" data-identifier="item_1"></span>
     <script>
-        // The counter URL format for SeeYouFarm
-        const counterUrl = "https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://yourusername.github.io/your-repository";
-        
-        // Initialize the click count from localStorage or default to 0
-        let counter = parseInt(localStorage.getItem('counter')) || 0;
-
-        // Update the displayed counter image URL
-        document.getElementById('pageCounter').src = counterUrl;
-
-        // Function to simulate incrementing the counter
-        document.getElementById('incrementButton').addEventListener('click', function() {
-            counter++; // Increment the counter
-            localStorage.setItem('counter', counter); // Save to localStorage
-
-            // Update the image to reflect the new count (this won't be live in SeeYouFarm, but simulates it)
-            const newUrl = `https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https://yourusername.github.io/your-repository&count=${counter}`;
-            document.getElementById('pageCounter').src = newUrl; // Update the counter image URL
-        });
-    </script>
-
-</body>
-</html>
+        (function(d,e,s){
+            if(d.getElementById("likebtn_wjs")) return;
+            a=d.createElement(e); m=d.getElementsByTagName(e)[0];
+            a.async=1; a.id="likebtn_wjs"; a.src=s;
+            m.parentNode.insertBefore(a, m)
+        })(doc
+           
