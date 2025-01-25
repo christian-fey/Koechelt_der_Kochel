@@ -3,22 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hit Counter Example</title>
+    <title>Simple Like Button</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
+        .like-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to My GitHub Page</h1>
-    <p>Check out how many hits this page has received:</p>
-    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fg356bae1212%2Fhit-counter" alt="Hit Counter Badge">
+    <button class="like-button" id="likeButton">Like</button>
+    <p id="likeStatus"></p>
 
-    <footer>
-        <p>Hosted on GitHub Pages</p>
-    </footer>
+    <script>
+        let likeCount = 0;
+
+        document.getElementById('likeButton').addEventListener('click', function() {
+            likeCount++;
+            document.getElementById('likeStatus').innerText = `Likes: ${likeCount}`;
+        });
+    </script>
 </body>
 </html>
