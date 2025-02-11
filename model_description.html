@@ -12,27 +12,69 @@
             color: #333;
         }
         img {
-            max-width: 90%; /* Ensure images are responsive */
-            height: auto; /* Maintain aspect ratio */
+            max-width: 90%; /* Bilder responsiv gestalten */
+            height: auto; /* Seitenverhältnis beibehalten */
         }
     </style>
 </head>
 <body>
 
+<p>
+<a href="https://christian-fey.github.io/Koechelt_der_Kochel/" >zurück </a>
+</p>
+
 <h2>Beschreibung des Vorhersagemodells</h2>
 
-<p>Das Modell wurde trainiert auf historischen Wetterprognosen zwischen November 2022 und Dezember 2024, die über die API von Open-Meteo.com bezogen wurden.</p>
+<p>
+    Die Idee des Vorhersagemodells ist es, verschiedene Einflussfaktoren auf Föhnwinde am Kochelsee miteinander zu kombinieren,
+    um daraus eine Wahrscheinlichkeit für gute Surfbedingungen abzuleiten. Neben Einflussfaktoren wie Druckgradient
+    und Windrichtung (siehe <a href="https://www.windinfo.eu/webcam-kochelsee/">windinfo.eu</a>) wird auch die vom AROME-Wettermodell vorhergesagte Windgeschwindigkeit verwendet.
+    Diese Wetterprognosen werden über die API von <a href="https://open-meteo.com/">Open-Meteo.com</a> bezogen, während
+    die tatsächliche Situation am Kochelsee wiederum über Webcams und Messstationen, z.B. über <a href="https://www.addicted-sports.com/webcam/kochelsee/trimini/">addicted-sports</a>
+    oder <a href="https://www.windinfo.eu/webcam-kochelsee/">windinfo.eu</a>, beurteilt werden kann.
+    
+    Das aktuelle Modell wurde mit diesen Daten zwischen November 2022 und Dezember 2024 trainiert.
+</p>
 
-<p>Nach dem Training erreicht das Modell auf "ungesehenen" Daten eine Präzision von ca. 80 % und einen Recall von ca. 50 %. Das heißt, an 80 % der vorhergesagten Föhntage herrscht tatsächlich Föhn am Kochelsee, und ca. die Hälfte aller Tage, an denen tatsächlich Föhn herrscht, wird auch vorhergesagt. Das wird in der Confusion Matrix unten für einen Zeitraum von 234 Tagen verdeutlicht. Dort erhalten Tage mit hoher Föhnwahrscheinlichkeit (> 75 %) das Predicted Label 1, und Tage, an denen tatsächlich Föhn war, das True Label 1.</p>
+<p>
+    Ab welcher Wahrscheinlichkeit man zum Kochelsee fährt, muss natürlich jeder selbst entscheiden.
+    Als Orientierung ist jedoch ein Schwellwert von ca. 75 % empfehlenswert.
+
+    In diesem Fall erreicht das Modell auf "ungesehenen" Daten eine Präzision von ca. 80 % und einen Recall von ca. 50 %.
+    Das bedeutet, an 80 % der vorhergesagten Föhntage herrscht tatsächlich Föhn am Kochelsee,
+    und ca. die Hälfte aller Tage, an denen tatsächlich Föhn herrscht, wird auch vorhergesagt.
+    Das wird in der Confusion Matrix unten für einen Zeitraum von 234 Tagen verdeutlicht.
+    Dort erhalten Tage mit hoher Föhnwahrscheinlichkeit (> 75 %) das Predicted Label 1,
+    und Tage, an denen tatsächlich Föhn war, das True Label 1.
+</p>
 
 <img src="images/confusion_matrix.png" alt="Confusion Matrix">
 
-<p>Das zugrunde liegende Modell ist ein Random Forest-Classifier, basierend auf <a href="https://scikit-learn.org/stable/">scikit-learn</a>, der 14 Merkmale zur Vorhersage verwendet und aus ca. 100 Entscheidungsbäumen besteht. Zur Illustration sind die Namen dieser Merkmale unten zusammen mit ihrer Wichtigkeit dargestellt. Besonders hilfreiche Merkmale sind die im AROME-Wettermodell vorhergesagte Windgeschwindigkeit multipliziert mit der Dauer, die Druckdifferenz zwischen Kochel und Bozen sowie die vorhergesagte Luftfeuchtigkeit. Falls jemand weitere gute Ideen hat, welche Größen die Vorhersage noch verbessern könnten, gerne Bescheid geben! :) Die Temperaturdifferenz zwischen Kochel und Bozen bei 800 hPa (ca. 2000 m Höhe) habe ich z. B. berücksichtigt, da sie <a href="https://lu-glidz.blogspot.com/2022/12/fohn-bei-kleinem-druckgradient.html">hier</a> als wichtiger Treiber für Föhnwinde erwähnt wird.</p>
+<p>
+    Die Vorhersage wird ca. alle 2 Stunden aktualisiert.
+    Wenn sich in diesem Zeitraum die zugrunde liegenden Wettermodelle ändern,
+    kann es hierbei durchaus zu stärkeren Verschiebungen kommen, und 
+    es lohnt sich, auch noch einmal vor Abfahrt einen Blick auf die aktuelle Prognose zu werfen. 
+</p>
+
+<p>
+    Das verwendete Modell ist ein Random Forest-Classifier,
+    basierend auf <a href="https://scikit-learn.org/stable/">scikit-learn</a>,
+    der 14 Merkmale zur Vorhersage verwendet und aus ca. 100 Entscheidungsbäumen besteht.
+    Zur Illustration sind die Namen dieser Merkmale unten zusammen mit ihrer Wichtigkeit dargestellt.
+    Besonders hilfreiche Merkmale sind die im AROME-Wettermodell vorhergesagte Windgeschwindigkeit multipliziert mit der Dauer,
+    die Druckdifferenz zwischen Kochel und Bozen sowie die vorhergesagte Luftfeuchtigkeit.
+    Die Temperaturdifferenz zwischen Kochel und Bozen bei 800 hPa (ca. 2000 m Höhe) sollte laut diesem Artikel eine Rolle spielen:
+    <a href="https://lu-glidz.blogspot.com/2022/12/fohn-bei-kleinem-druckgradient.html">hier</a>.
+    Falls jemand weitere gute Ideen hat, welche Größen die Vorhersage noch verbessern könnten, gerne Bescheid geben! :)
+     
+</p>
 
 <img src="images/feature_importance.png" alt="Merkmale und Wichtigkeit">
 
-<p>Christian Fey <br>
-<a href="mailto:kochelmann@posteo.net">kochelmann@posteo.net</a></p>
-
+<p>
+    Christian Fey <br>
+    <a href="mailto:mlwind@posteo.net">mlwind@posteo.net</a>
+</p>
 </body>
 </html>
