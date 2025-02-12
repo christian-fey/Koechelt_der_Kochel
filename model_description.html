@@ -29,11 +29,13 @@
     Die Idee des Vorhersagemodells ist es, verschiedene Einflussfaktoren auf Föhnwind am Kochelsee miteinander zu kombinieren,
     um daraus eine Wahrscheinlichkeit für gute Surfbedingungen abzuleiten. Neben Einflussfaktoren wie Druckgradient
     und Windrichtung (siehe <a href="https://www.windinfo.eu/webcam-kochelsee/">windinfo.eu</a>) wird auch die vom AROME-Wettermodell vorhergesagte Windgeschwindigkeit verwendet.
-    Diese Wetterprognosen werden über die API von <a href="https://open-meteo.com/">Open-Meteo.com</a> bezogen, während
+    Diese Wettermerkmale werden über die API von <a href="https://open-meteo.com/">Open-Meteo.com</a> bezogen, während
     die tatsächliche Situation am Kochelsee wiederum über Webcams und Messstationen, z.B. über <a href="https://www.addicted-sports.com/webcam/kochelsee/trimini/">addicted-sports</a>
     oder <a href="https://www.windinfo.eu/webcam-kochelsee/">windinfo.eu</a>, beurteilt werden kann.
     
-    Das aktuelle Modell wurde mit diesen Daten zwischen November 2022 und Dezember 2024 trainiert.
+    Das aktuelle Modell wurde mit diesen Informationen aus einem Zeitraum zwischen November 2022 und Dezember 2024 trainiert.
+    In regelmäßigen Abständen soll der Zeitraum durch Hinzunahme aktuellerer Daten vergrößert werden,
+    um so die Vorhersagequalität weiter zu verbessern . 
 </p>
 
 <p>
@@ -67,7 +69,7 @@
     Die Temperaturdifferenz zwischen Kochel und Bozen bei 800 hPa (ca. 2000 m Höhe) sollte laut diesem Artikel eine Rolle spielen:
     <a href="https://lu-glidz.blogspot.com/2022/12/fohn-bei-kleinem-druckgradient.html">hier</a>.
     Falls jemand weitere gute Ideen hat, welche Größen die Vorhersage noch verbessern könnten, gerne Bescheid geben! :)
-     
+
 </p>
 
 <img src="images/feature_importance.png" alt="Merkmale und Wichtigkeit">
