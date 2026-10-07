@@ -1,9 +1,9 @@
 {
-  "created_utc": "2026-10-07T17:25:59Z",
+  "created_utc": "2026-10-07T23:05:39Z",
   "forecast": [
     {
       "day": "2026-10-08",
-      "foehn_probability_pct": 0.3
+      "foehn_probability_pct": 0.5
     },
     {
       "day": "2026-10-07",
