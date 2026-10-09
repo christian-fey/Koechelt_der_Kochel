@@ -1,6 +1,10 @@
 {
-  "created_utc": "2026-10-09T00:23:19Z",
+  "created_utc": "2026-10-09T09:04:22Z",
   "forecast": [
+    {
+      "day": "2026-10-10",
+      "foehn_probability_pct": 0.6
+    },
     {
       "day": "2026-10-09",
       "foehn_probability_pct": 0.2
@@ -36,10 +40,6 @@
     {
       "day": "2026-10-01",
       "foehn_probability_pct": 0.9
-    },
-    {
-      "day": "2026-09-30",
-      "foehn_probability_pct": 0.2
     }
   ]
 }
